@@ -4,6 +4,7 @@ import UserLayout from '@/layouts/UserLayout';
 import BasicLayout from '@/layouts/BasicLayout';
 
 const UserLogin = React.lazy(() => import('@/pages/UserLogin'));
+const Douyin = React.lazy(() => import('@/pages/Douyin'));
 
 const UserRegister = React.lazy(() => import('@/pages/UserRegister'));
 const Dashboard = React.lazy(() => import('@/pages/Dashboard'));
@@ -54,6 +55,7 @@ const routerConfig = [
       { path: '/exception/403', component: Forbidden },
       { path: '/exception/204', component: Empty },
       { path: '/exception/404', component: NotFound },
+      { path: '/douyin', component: Douyin },
       { path: '/', redirect: '/dashboard/monitor' },
       { component: NotFound },
     ],

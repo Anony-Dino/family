@@ -3,6 +3,9 @@ export default {
   'app.menu.dashboard': 'Dashboard',
   'app.menu.dashboard.monitor': '监控页',
 
+  // 抖音
+  'app.menu.douyin': '抖音',
+
   'app.menu.chart': '图表页',
   'app.menu.chart.basic': '基础图表',
   'app.menu.chart.general': '通用图表',

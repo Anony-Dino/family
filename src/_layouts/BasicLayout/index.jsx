@@ -1,26 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import Layout from '@icedesign/layout';
 import { enquire } from 'enquire-js';
-
+import Layout from '@icedesign/layout';
 import Header from './components/Header';
 import Aside from './components/Aside';
 import Footer from './components/Footer';
-import styles from './index.module.scss';
 
-const BasicLayout = (props) => {
-
-  const [isScreen, setIsScreen] = useState();
-
-  function enquireScreenHandle(type) {
-    const handler = {
-      match: () => {
-        setIsScreen(type);
-      },
-    };
-
-    return handler;
-  }
-
+export default function BasicLayout(props) {
+  const [isScreen, setIsScreen] = useState('isDesktop');
+  // const [collapse, setCollapse] = useState(false);
   /**
    * 注册监听屏幕的变化，可根据不同分辨率做对应的处理
    */
@@ -34,28 +21,40 @@ const BasicLayout = (props) => {
     enquire.register(isDesktop, enquireScreenHandle('isDesktop'));
   }
 
+  function enquireScreenHandle(type) {
+    const handler = {
+      match: () => {
+        setIsScreen(type);
+      },
+    };
+
+    return handler;
+  }
+
   useEffect(() => {
     enquireScreenRegister();
   }, []);
 
   const isMobile = isScreen !== 'isDesktop';
-
   return (
-    <div className={`${styles.iceDesignLayoutDark} ${styles.iceDesignLayout}`}>
-      <Layout >
+    <Layout>
+      <Layout.Header>
         <Header isMobile={isMobile} />
-        <Layout.Section scrollable>
-          <Layout.Aside width="auto" type={null}>
-            <Aside isMobile={isMobile} />
-          </Layout.Aside>
-          <Layout.Main>
-            {props.children}
-          </Layout.Main>
-        </Layout.Section>
-        <Footer />
-      </Layout>
-    </div>
-  );
-};
+      </Layout.Header>
 
-export default BasicLayout;
+      <Layout.Section scrollable>
+        <Layout.Aside>
+          <Aside isMobile={isMobile} />
+        </Layout.Aside>
+        <Layout.Main>
+          <div style={{ minHeight: '90vh' }}>
+            { props.children }
+          </div>
+          <Layout.Footer>
+            <Footer />
+          </Layout.Footer>
+        </Layout.Main>
+      </Layout.Section>
+    </Layout>
+  );
+}

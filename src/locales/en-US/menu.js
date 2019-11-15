@@ -3,6 +3,9 @@ export default {
   'app.menu.dashboard': 'Dashboard',
   'app.menu.dashboard.monitor': 'Monitor',
 
+  // 抖音
+  'app.menu.douyin': 'TikTok',
+
   'app.menu.chart': 'Chart',
   'app.menu.chart.basic': 'Basic Chart',
   'app.menu.chart.general': 'General Chart',

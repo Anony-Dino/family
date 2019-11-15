@@ -1,15 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link, withRouter } from 'react-router-dom';
-import { Icon, Nav } from '@alifd/next';
-import { asideMenuConfig } from '@/config/menu.js';
-import Logo from '../Logo';
-import styles from './index.module.scss';
 import FoundationSymbol from '@icedesign/foundation-symbol';
+import { Link, withRouter } from 'react-router-dom';
+import { Nav } from '@alifd/next';
 import { FormattedMessage } from 'react-intl';
 import stores from '@/stores/index';
 import Auth from '@/components/Auth';
+import { asideMenuConfig } from '@/config/menu.js';
 // import { request } from '@/utils/request';
 // import { menu } from '@/config/dataSource';
+import styles from './index.module.scss';
 
 const SubNav = Nav.SubNav;
 const NavItem = Nav.Item;
@@ -52,8 +51,8 @@ function getSubMenuOrItem(item, index) {
           key={index}
           icon={item.icon ? <FoundationSymbol type={item.icon} size="small" /> : null}
           label={
-            <span className={styles.iceMenuCollapseHide}>
-            <FormattedMessage id={getLocaleKey(item)} />
+            <span className="ice-menu-collapse-hide">
+              <FormattedMessage id={getLocaleKey(item)} />
             </span>
           }
         >
@@ -73,7 +72,7 @@ function getSubMenuOrItem(item, index) {
       </Link>
     </NavItem>
   );
-  
+
   return renderAuthItem(navItem, item.authorities);
 }
 
@@ -164,7 +163,7 @@ const Aside = withRouter((props) => {
   }
 
   return (
-    <div className={`${styles.iceDesignLayoutAside} ${styles.iceDesignLiteAside}`}>
+    <div className={`${styles.iceDesignLayoutAside} ${styles.iceDesignProAside}`}>
       <Nav
         style={{width: collapse ? '60px' : '200px'}}
         mode={mode}
